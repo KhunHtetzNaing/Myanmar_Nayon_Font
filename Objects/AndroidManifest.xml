@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.htetznaing.mmnayonfont"
+	android:versionCode="1"
+	android:versionName="1.0"
+	android:installLocation="internalOnly">
+	
+	<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="19"/>
+	<supports-screens android:largeScreens="true" 
+	    android:normalScreens="true" 
+	    android:smallScreens="true" 
+	    android:anyDensity="true"
+		android:exported="true"/>
+	         <action android:name="android.intent.action.MAIN" />
+	         <category android:name="android.intent.category.LAUNCHER" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<application
+		android:icon="@drawable/icon"
+		android:label="Myanmar Nayon Font">
+		
+		<activity android:name="com.google.android.gms.common.api.GoogleApiActivity"
+		  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+		  android:exported="false"/>
+		    <meta-data
+		  android:name="com.google.android.gms.version"
+		  android:value="@integer/google_play_services_version" />
+		<activity
+		  android:name="com.google.android.gms.ads.AdActivity"
+		  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+		  android:theme="@android:style/Theme.Translucent" />
+		  <activity android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity"
+		  android:theme="@style/Theme.IAPTheme"/>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".main"
+			android:label="Myanmar Nayon Font"
+			android:screenOrientation="unspecified">
+			<intent-filter>
+			   <action android:name="android.intent.action.MAIN" />
+			   <category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".main2"
+			android:label="Myanmar Nayon Font"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".samsung"
+			android:label="Myanmar Nayon Font"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".oppo"
+			android:label="Myanmar Nayon Font"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".huawei"
+			android:label="Myanmar Nayon Font"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".vivo"
+			android:label="Myanmar Nayon Font"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".tutorial"
+			android:label="Myanmar Nayon Font"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".about"
+			android:label="Myanmar Nayon Font"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".xiaomi"
+			android:label="Myanmar Nayon Font"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".other"
+			android:label="Myanmar Nayon Font"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".msg"
+			android:label="Myanmar Nayon Font"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".msg1"
+			android:label="Myanmar Nayon Font"
+			android:screenOrientation="unspecified">
+		</activity>
+	</application>
+</manifest>

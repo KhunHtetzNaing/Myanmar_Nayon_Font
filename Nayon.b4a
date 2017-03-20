@@ -1,0 +1,356 @@
+﻿Version=6.8
+NumberOfModules=12
+Module1=Main2
+Module2=Samsung
+Module3=Oppo
+Module4=Huawei
+Module5=Vivo
+Module6=SlideMenu
+Module7=Tutorial
+Module8=About
+Module9=Xiaomi
+Module10=Other
+Module11=msg
+Module12=msg1
+Build1=Default,com.htetznaing.mmnayonfont
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="19"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"~\n~	android:exported="true"/>~\n~         <action android:name="android.intent.action.MAIN" />~\n~         <category android:name="android.intent.category.LAUNCHER" />)~\n~	~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~AddPermission(android.permission.WRITE_EXTERNAL_STORAGE)~\n~AddPermission(android.permission.INTERNET)~\n~AddPermission(android.permission.READ_EXTERNAL_STORAGE)~\n~'End of default text.~\n~'************ Google Play Services Base ************~\n~AddApplicationText(~\n~   <activity android:name="com.google.android.gms.common.api.GoogleApiActivity"~\n~  android:theme="@android:style/Theme.Translucent.NoTitleBar"~\n~  android:exported="false"/>~\n~    <meta-data~\n~  android:name="com.google.android.gms.version"~\n~  android:value="@integer/google_play_services_version" />~\n~)~\n~~\n~'************ Google Play Services Base (end) ************~\n~~\n~'************ Firebase Ads ************~\n~AddApplicationText(~\n~  <activity~\n~  android:name="com.google.android.gms.ads.AdActivity"~\n~  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"~\n~  android:theme="@android:style/Theme.Translucent" />~\n~  <activity android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity"~\n~  android:theme="@style/Theme.IAPTheme"/>~\n~)~\n~'************ Firebase Ads (end) ************
+IconFile=
+NumberOfFiles=20
+File1=about.png
+File2=bg.jpg
+File3=data.zip
+File4=fb.png
+File5=huawei.jpg
+File6=icon.png
+File7=menu.png
+File8=moreapp.png
+File9=Nayon.apk
+File10=Nayon.hwt
+File11=Nayon.itz
+File12=Nayon.ttf
+File13=Nayon.txj
+File14=open.png
+File15=oppo.png
+File16=other.png
+File17=samsung.png
+File18=share.png
+File19=vivo.png
+File20=xiaomi.png
+NumberOfLibraries=10
+Library1=core
+Library2=phone
+Library3=animatetext
+Library4=firebaseadmob
+Library5=mlfiles
+Library6=animation
+Library7=webviewsettings
+Library8=stringutils
+Library9=clipboard
+Library10=abzipunzip
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: Myanmar Nayon Font
+	#VersionCode: 1
+	#VersionName: 1.0
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: false
+#End Region
+
+Sub Process_Globals
+	Dim ad1,ad2 As Timer
+End Sub
+
+Sub Globals
+	Dim ph As Phone
+	Dim atx As AnimateText
+	Dim b1,b2,b3,b4 As Label
+	Dim mm As Typeface : mm = mm.LoadFromAssets("Nayon.ttf")
+	Dim lb,lfoot As Label
+	Dim Banner As AdView
+	Dim Interstitial As InterstitialAd
+	Dim imv As ImageView
+	Dim ml As MLfiles
+	
+	Dim sm As SlideMenu
+	Dim tlb As Label
+	Dim menu,share As Button
+	Dim sbg,mbg As BitmapDrawable
+	Dim copy As BClipboard
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.Color = Colors.White
+	ph.SetScreenOrientation(1)
+	
+	imv.Initialize("")
+	imv.Bitmap = LoadBitmap(File.DirAssets,"icon.png")
+	imv.Gravity = Gravity.FILL
+	Activity.AddView(imv,50%x - 40dip,55dip+1%y,95dip,100dip)
+
+	lb.Initialize("")
+	lb.Typeface = mm
+	lb.TextColor = Colors.Black
+	Activity.AddView(lb,0%x,(imv.Height+imv.Top),100%x,10%y)
+	lb.Gravity = Gravity.CENTER
+	lb.TextSize = 17
+	atx.initialize("atx",Me,200)
+	atx.Run( " ♡ နယုန္လ စာျပန္ပြဲ ♡" &CRLF& "Myanmar Font Style" ,lb)
+	atx.Endable = True
+
+	b1.Initialize("b1")
+	Dim b1bg As ColorDrawable
+	b1bg.Initialize(Colors.Black,10)
+	b1.Text = "Install"
+	b1.Background = b1bg
+	b1.Gravity = Gravity.CENTER
+	b1.Textcolor = Colors.White
+	b1.TextSize = 17
+	Activity.AddView(b1,20%x,(lb.Top+lb.Height)+1%y,60%x,50dip)
+
+	b2.Initialize("b2")
+	b2.Background = b1bg
+	b2.Text = "Tutorial"
+	b2.Gravity = Gravity.CENTER
+	b2.Textcolor = Colors.White
+	b2.TextSize = 17
+	Activity.AddView(b2,20%x,(b1.Top+b1.Height)+2%y,60%x,50dip)
+
+	b3.Initialize("b3")
+	b3.Text = "About"
+	b3.Background = b1bg
+	b3.Gravity = Gravity.CENTER
+	b3.Textcolor = Colors.White
+	b3.TextSize = 17
+	Activity.AddView(b3,20%x,(b2.Top+b2.Height)+2%y,60%x,50dip)
+
+	b4.Initialize("b4")
+	b4.Text = "More App"
+	b4.Background = b1bg
+	b4.Gravity = Gravity.CENTER
+	b4.Textcolor = Colors.White
+	b4.TextSize = 17
+	Activity.AddView(b4,20%x,(b3.Top+b3.Height)+2%y,60%x,50dip)
+
+	lfoot.Initialize("ft")
+	lfoot.Text = "Developed By Myanmar Android Apps"
+	lfoot.TextColor = Colors.Magenta
+	lfoot.Gravity = Gravity.CENTER
+	Activity.AddView(lfoot,0%x,(b4.Height+b4.Top)+5%y,100%x,5%y)
+
+	'NEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+	tlb.Initialize("tlb")
+	tlb.Text = "Myanmar Nayon Font"
+	tlb.Color = Colors.rgb(76, 175, 80)
+	tlb.TextColor = Colors.White
+	tlb.TextSize = 20
+	tlb.Typeface = Typeface.DEFAULT_BOLD
+	
+	tlb.Gravity = Gravity.CENTER
+	Activity.AddView(tlb,0%x,0%y,100%x,55dip)
+	
+	sm.Initialize(Activity, Me, "SlideMenu",0,70%x)
+	sm.AddItem("Samsung",LoadBitmap(File.DirAssets,"samsung.png"),1)
+	sm.AddItem("Oppo",LoadBitmap(File.DirAssets,"oppo.png"),2)
+	sm.AddItem("Vivo",LoadBitmap(File.DirAssets,"vivo.png"),3)
+	sm.AddItem("Huawei",LoadBitmap(File.DirAssets,"huawei.jpg"),4)
+	sm.AddItem("Xiaomi",LoadBitmap(File.DirAssets,"xiaomi.png"),5)
+	sm.AddItem("Other [#Root]",LoadBitmap(File.DirAssets,"other.png"),6)
+	sm.AddItem("Share App",LoadBitmap(File.DirAssets,"share.png"),7)
+	sm.AddItem("More App",LoadBitmap(File.DirAssets,"moreapp.png"),8)
+	sm.AddItem("About",LoadBitmap(File.DirAssets,"about.png"),9)
+	
+	mbg.Initialize(LoadBitmap(File.DirAssets,"menu.png"))
+	menu.Initialize("menu")
+	menu.Background = mbg
+	menu.Gravity = Gravity.CENTER
+	Activity.AddView(menu,10dip,12.5dip,30dip,30dip)
+	
+	sbg.Initialize(LoadBitmap(File.DirAssets,"share.png"))
+	share.Initialize("share")
+	share.Background = sbg
+	share.Gravity = Gravity.CENTER
+	Activity.AddView(share,100%x - 40dip,12.5dip,30dip,30dip)
+	
+	Banner.Initialize2("Banner","ca-app-pub-4173348573252986/3885084957",Banner.SIZE_SMART_BANNER)
+	Dim height As Int
+	If GetDeviceLayoutValues.ApproximateScreenSize < 6 Then
+		'phones
+		If 100%x > 100%y Then height = 32dip Else height = 50dip
+	Else
+		'tablets
+		height = 90dip
+	End If
+	Activity.AddView(Banner, 0dip, 100%y - height, 100%x, height)
+	Banner.LoadAd
+	Log(Banner)
+	
+	Interstitial.Initialize("Interstitial","ca-app-pub-4173348573252986/5361818159")
+	Interstitial.LoadAd
+		
+	ad1.Initialize("ad1",100)
+	ad1.Enabled = False
+	ad2.Initialize("ad2",60000)
+	ad2.Enabled = True
+End Sub
+
+Sub ft_Click
+	Try
+ 
+		Dim Facebook As Intent
+ 
+		Facebook.Initialize(Facebook.ACTION_VIEW, "fb://page/627699334104477")
+		StartActivity(Facebook)
+ 
+	Catch
+ 
+		Dim i As Intent
+		i.Initialize(i.ACTION_VIEW, "https://m.facebook.com/MmFreeAndroidApps")
+ 
+		StartActivity(i)
+ 
+	End Try
+End Sub
+
+Sub b1_Click
+	ad1.Enabled = True
+	StartActivity(Main2)
+End Sub
+
+Sub b2_Click
+	StartActivity(Tutorial)
+End Sub
+
+Sub b3_Click
+	StartActivity(About)
+End Sub
+
+Sub b4_Click
+	Dim p As PhoneIntents
+	StartActivity(p.OpenBrowser("http://www.htetznaing.com"))
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub ad1_Tick
+	If Interstitial.Ready Then Interstitial.Show
+	ad1.Enabled = False
+End Sub
+
+
+Sub Interstitial_AdClosed
+	Interstitial.LoadAd
+End Sub
+
+Sub Interstitial_ReceiveAd
+	Log("Received")
+End Sub
+
+Sub Interstitial_FailedToReceiveAd (ErrorCode As String)
+	Log("not Received - " &"Error Code: "&ErrorCode)
+	Interstitial.LoadAd
+End Sub
+
+Sub Interstitial_adopened
+	Log("Opened")
+End Sub
+
+Sub ad2_Tick
+	If Interstitial.Ready Then Interstitial.Show
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean
+	ml.rmrf(File.DirRootExternal & "/MyanmarAndroidApps")
+	Dim Answ As Int
+	If KeyCode = KeyCodes.KEYCODE_BACK Then
+		Answ = Msgbox2("If you want to get new updates on  Facebook? Please Like " &CRLF & "Myanmar Android Apps Page!","Attention!", "Yes", "", "No",LoadBitmap(File.DirAssets,"fb.png" ))
+		If Answ = DialogResponse.NEGATIVE Then
+			ad1.Enabled = True
+			Return False
+		End If
+	End If
+	If Answ = DialogResponse.POSITIVE Then
+		If ph.SdkVersion > 19 Then
+			ad1.Enabled = True
+		End If
+		Try
+ 
+			Dim Facebook As Intent
+ 
+			Facebook.Initialize(Facebook.ACTION_VIEW, "fb://page/627699334104477")
+			StartActivity(Facebook)
+ 
+		Catch
+ 
+			Dim i As Intent
+			i.Initialize(i.ACTION_VIEW, "https://m.facebook.com/MmFreeAndroidApps")
+ 
+			StartActivity(i)
+ 
+		End Try
+		Return False
+	End If
+End Sub
+
+
+Sub SlideMenu_Click(Item As Object)
+	sm.Hide
+
+	Select Item
+		Case 1 :
+			StartActivity(Samsung)
+		Case 2 :
+			StartActivity(Oppo)
+		Case 3 :
+			StartActivity(Vivo)
+		Case 4 :
+			StartActivity(Huawei)
+		Case 5 :
+			StartActivity(Xiaomi)
+		Case 6 :
+			StartActivity(Other)
+		Case 7 :
+			Dim ShareIt As Intent
+			copy.clrText
+			copy.setText("#Myanmar_Nayon_Font App! Beautiful Myanmar Zawgyi Font Style!	You can Use in Samung, Oppo,Vivo, Huawei (EMUI) and Xiaomi (MIUI) without Root Access!!!! Download Free at : http://www.htetznaing.com/search?q=Myanmar+Nayon+Font")
+			ShareIt.Initialize (ShareIt.ACTION_SEND,"")
+			ShareIt.SetType ("text/plain")
+			ShareIt.PutExtra ("android.intent.extra.TEXT",copy.getText)
+			ShareIt.PutExtra ("android.intent.extra.SUBJECT","Get Free!!")
+			ShareIt.WrapAsIntentChooser("Share App Via...")
+			StartActivity (ShareIt)
+		Case 8 :
+			Dim p As PhoneIntents
+			StartActivity(p.OpenBrowser("http://www.htetznaing.com"))
+		Case 9 :
+			StartActivity(About)
+	End Select
+End Sub
+
+Sub menu_Click
+	If sm.isVisible Then sm.Hide Else sm.Show
+End Sub
+
+Sub share_Click
+	Dim ShareIt As Intent
+	copy.clrText
+	copy.setText("#Myanmar_Nayon_Font App! Beautiful Myanmar Zawgyi Font Style!	You can Use in Samung, Oppo,Vivo, Huawei (EMUI) and Xiaomi (MIUI) without Root Access!!!! Download Free at : http://www.htetznaing.com/search?q=Myanmar+Nayon+Font")
+	ShareIt.Initialize (ShareIt.ACTION_SEND,"")
+	ShareIt.SetType ("text/plain")
+	ShareIt.PutExtra ("android.intent.extra.TEXT",copy.getText)
+	ShareIt.PutExtra ("android.intent.extra.SUBJECT","Get Free!!")
+	ShareIt.WrapAsIntentChooser("Share App Via...")
+	StartActivity (ShareIt)
+End Sub
